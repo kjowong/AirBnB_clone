@@ -19,17 +19,14 @@ class FileStorage:
     def save(self):
         new_dict = {}
         for key in self.__objects.keys():
-            new_dict[key] = self.__objects[key].to_json
-            print("------")
-            print(new_dict.get(key))
-            print("------")
+            new_dict[key] = self.__objects[key].to_json()
 
         for key in new_dict:
-            if type(key) is datetime:
-                new_dict[key] = str(new_dict.get(key))
-        print(new_dict)
-        #with open(self.__file_path, "w+", encoding="UTF8"):
-         #   return json.dumps(new_dict)
+            for new_key in new_dict[key]:
+                if type(new_dict[key][new_key]) is datetime:
+                    new_dict[key][new_key] = str(new_dict[key].get(new_key))
+        with open(self.__file_path, "w+", encoding="UTF8") as f:
+            f.write(json.dumps(new_dict))
 
     def reload(self):
         pass
