@@ -28,3 +28,8 @@ class BaseModel:
 
     def __str__(self):
         return "[{}] ({}){}".format(self.__class__.__name__, self.id, self.__dict__)
+        new_dict.update({'__class__': str(self.__class__)})
+        return new_dict
+
+    def __str__(self):
+        return("[{}] ({}) {}". format(self.__class__, self.id, self.__dict__))
