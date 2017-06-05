@@ -16,20 +16,24 @@ class FileStorage:
     def new(self, obj):
         self.__objects = {obj.id: obj}
 
+    # serializes to json
+
     def save(self):
         new_dict = {}
         for key in self.__objects.keys():
             new_dict[key] = self.__objects[key].to_json()
-
         for key in new_dict:
             for new_key in new_dict[key]:
                 if type(new_dict[key][new_key]) is datetime:
                     new_dict[key][new_key] = str(new_dict[key].get(new_key))
-        with open(self.__file_path, "w+", encoding="UTF8") as f:
+        with open(self.__file_path, "w", encoding="UTF8") as f:
             f.write(json.dumps(new_dict))
 
+    #deserializes from json
+
     def reload(self):
-        pass
-        #if os.path.isfile(self.__file_path):
-         #   with open(self.__file_path, "r", encoding="UTF8") as f:
-          #      return json.loads(f)
+        if os.path.isfile(self.__file_path):
+            with open(self.__file_path, "r", encoding="UTF8") as f:
+                reloaded = json.load(f)
+            for key in reloaded.keys():
+                self.__objects[key] = reloaded[key]
