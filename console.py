@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """ Entry point to command line interpretor """
 import cmd
+import os
 
 
 class HBNBCommand(cmd.Cmd):
     """ entry point to hbnb"""
 #    intro = "Simple command line interpretor"
-    prompt = '(hbnb) '
+    prompt = '(hbnb) \n'
 
     def do_quit(self, line):
         return True
@@ -17,9 +18,6 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         return False
-
-    def help_quit(self):
-        print("Quit command to exit the program\n")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
