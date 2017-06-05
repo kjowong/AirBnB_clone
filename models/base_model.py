@@ -2,15 +2,21 @@
 """BaseModel that defines all common attributes/methods for other classes"""
 from datetime import datetime
 from uuid import uuid4
-from models.__init__ import storage
+from models import storage
 
 
-class BaseModel:
+class BaseModel():
     "class Base Model"
     def __init__(self, *args, **kwargs):
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        storage.new(self)
+        if kwargs:
+            self.id = kwargs['id']
+            self.created_at = kwargs['created_at']
+            self.updated_at = datetime.now()
+            print("hello")
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            storage.new(self)
 
     def save(self):
         " updates public instance attribute with the current datetime"
@@ -22,10 +28,8 @@ class BaseModel:
         new_dict = self.__dict__.copy()
         new_dict.update({'__class__': str(self.__class__.__name__)})
         new_dict.update({'created_at': str(self.created_at)})
-        new_dict.update({'upated_at': str(self.updated_at)})
+        new_dict.update({'updated_at': str(self.updated_at)})
         return new_dict
 
     def __str__(self):
         return "[{}] ({}){}".format(self.__class__.__name__, self.id, self.__dict__)
-        new_dict.update({'__class__': str(self.__class__)})
-        return new_dict
