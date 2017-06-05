@@ -15,7 +15,6 @@ class BaseModel:
     def save(self):
         " updates public instance attribute with the current datetime"
         self.updated_at = datetime.now()
-        self.created_at = datetime.now()
         storage.save()
 
     def to_json(self):
@@ -30,6 +29,3 @@ class BaseModel:
         return "[{}] ({}){}".format(self.__class__.__name__, self.id, self.__dict__)
         new_dict.update({'__class__': str(self.__class__)})
         return new_dict
-
-    def __str__(self):
-        return("[{}] ({}) {}". format(self.__class__, self.id, self.__dict__))
