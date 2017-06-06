@@ -23,6 +23,7 @@ class HBNBCommand(cmd.Cmd):
         return False
 
     def do_create(self, line):
+        """ create function """
         if not line:
             print("** class name missing **")
         else:
@@ -33,6 +34,29 @@ class HBNBCommand(cmd.Cmd):
                 print(inst.id)
             else:
                 print("** class doesn't exist **")
+
+    def do_show(self, line):
+        """ show function """
+        if not line:
+            print("** class name missing **")
+        else:
+            cmd = line.split()
+            flag = 0
+            if (cmd[0] in classes):
+                if (len(cmd) < 2):
+                    print("** instance id missing **")
+                else:
+                    obj = storage.all()
+                    new = str(cmd[0]) + "." + str(cmd[1])
+                    for key in obj.keys():
+                        if (new == key):
+                            print(obj[key])
+                            flag = 1
+                    if (flag == 0):
+                        print("** no instance found **")
+            else:
+                print("** class doesn't exist **")
+
 
 if __name__ == '__main__':
     classes = {"BaseModel": BaseModel}
