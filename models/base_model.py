@@ -16,6 +16,9 @@ class BaseModel:
 
     def to_json(self):
         " returns a dict containing all keys\values of the __dict __"
+        new_dict = self.__dict__.copy()
+        new_dict.update({'__class__': str(self.__class__)})
+        return new_dict
 
     def __str__(self):
-        return()
+        return("[{}] ({}) {}". format(self.__class__, self.id, self.__dict__))
