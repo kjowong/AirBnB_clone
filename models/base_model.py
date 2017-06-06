@@ -15,6 +15,8 @@ class BaseModel():
                     kwargs['created_at'] = datetime.strptime(kwargs['created_at'], format)
                 except:
                     pass
+            if '__class__' in kwargs:
+                del kwargs['__class__']
             self.__dict__ = kwargs
         else:
             self.id = str(uuid4())
