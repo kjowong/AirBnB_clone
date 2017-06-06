@@ -4,6 +4,7 @@ import cmd
 import os
 from models.base_model import BaseModel
 from models.__init__ import storage
+from models.engine.file_storage import FileStorage
 
 class HBNBCommand(cmd.Cmd):
     """ entry point to hbnb"""
@@ -55,6 +56,33 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** class doesn't exist **")
 
+    def do_destroy(self, line):
+        """ destroy function """
+        if not line:
+            print("** class name missing **")
+        else:
+            cmd = line.split()
+            flag = 0
+            if (cmd[0] in classes):
+                if (len(cmd) < 2):
+                    print("** instance id missing **")
+                else:
+                    obj = storage.all()
+                    new = str(cmd[0]) + "." + str(cmd[1])
+                    for key in obj.keys():
+                        if (new == key):
+                            print("obj before: {}".format(obj))
+                            print("----------------")
+                            del obj[key]
+                            print("----------------")
+                            print("obj after: {}".format(obj))
+                            flag = 1
+                            break
+                    storage.save()
+                    if (flag == 0):
+                        print("** no instance found **")
+            else:
+                print("** class doesn't exist **")
 
 if __name__ == '__main__':
     classes = {"BaseModel": BaseModel}
