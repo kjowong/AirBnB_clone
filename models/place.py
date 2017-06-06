@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """ creating Place Class """
 from models.base_model import BaseModel
+from models.base_model import City
+from models.base_model import User
 
 
 class Place(BaseModel):
@@ -19,7 +21,7 @@ class Place(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """ initialization """
-        if kwargs.get(id) is not None:
+        if kwargs is not None:
             self.__dict__ = kwargs
         else:
             super().__init__(self)

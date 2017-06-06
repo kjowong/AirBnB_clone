@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ creating City Class """
 from models.base_model import BaseModel
+from models.base_model import State
 
 
 class City(BaseModel):
@@ -10,7 +11,7 @@ class City(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """ initialization """
-        if kwargs.get(id) is not None:
+        if kwargs  is not None:
             self.__dict__ = kwargs
         else:
             super().__init__(self)
