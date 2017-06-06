@@ -39,4 +39,17 @@ class FileStorage():
                     load_value[k]['created_at'] = datetime.datetime.strptime(load_value[k]['created_at'], format)
                 except:
                     pass
-                self.__objects[k] = BaseModel(**load_value[k])
+                if (loaded_value[k]["__class__"] == "BaseModel"):
+                    self.__objects[k] = BaseModel(**load_value[k])
+                elif (loaded_value[k]["__class__"] == "User"):
+                    self.__objects[k] = User(**load_value[k])
+                elif (loaded_value[k]["__class__"] == "State"):
+                    self.__objects[k] = State(**loaded_value[k])
+                elif (loaded_value[k]["__class__"] == "Amenity"):
+                    self.__objects[k] = Amenity(**loaded_value[k])
+                elif (loaded_value[k]["__class__"] == "Place"):
+                    self.__objects[k] = Place(**loaded_value[k])
+                elif (loaded_value[k]["__class__"] == "Review"):
+                    self.__objects[k] = Review(**loaded_value[k])
+                else:
+                    print("class doesn't exist")
