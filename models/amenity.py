@@ -1,14 +1,17 @@
 #!/usr/bin/python3
-""" state class that inherits from BaseModel"""
+""" creating Amenity Class """
 from models.base_model import BaseModel
 
 
-class State(BaseModel):
-    """ defining state class """
+class Amenity(BaseModel):
+    """ Class Amenity """
     name = ""
 
     def __init__(self, *args, **kwargs):
+        """ initialization of self """
         if kwargs is not None:
             self.__dict__ = kwargs
         else:
             super().__init__(self)
+
+
