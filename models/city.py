@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ creating City Class """
 from models.base_model import BaseModel
-from models.base_model import State
 
 
 class City(BaseModel):

@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """ review class that inherits from BaseModel"""
 from models.base_model import BaseModel
-from models.base_model import Place
-from models.base_model import User
 
 
 class Review(BaseModel):

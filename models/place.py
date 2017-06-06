@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """ creating Place Class """
 from models.base_model import BaseModel
-from models.base_model import City
-from models.base_model import User
 
 
 class Place(BaseModel):
