@@ -15,8 +15,8 @@ class BaseModel():
                     kwargs['created_at'] = datetime.strptime(kwargs['created_at'], format)
                 except:
                     pass
-            if '__class__' in kwargs:
-                del kwargs['__class__']
+            #if '__class__' in kwargs:
+             #   del kwargs['__class__']
             self.__dict__ = kwargs
         else:
             self.id = str(uuid4())
@@ -40,4 +40,7 @@ class BaseModel():
         return new_dict
 
     def __str__(self):
-        return "[{}] ({}){}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+
+    def __repr__(self):
+        return self.__str__()

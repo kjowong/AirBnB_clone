@@ -84,6 +84,19 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** class doesn't exist **")
 
+    def do_all(self, line):
+        """ print all instances function """
+        if not line:
+            print("** class doesn't exist **")
+        else:
+            cmd = line.split()
+            if (cmd[0] in classes):
+                obj = storage.all()
+                for key in obj.keys():
+                    print(obj[key])
+            else:
+                print("** class doesn't exist **")
+
 if __name__ == '__main__':
     classes = {"BaseModel": BaseModel}
     HBNBCommand().cmdloop()
