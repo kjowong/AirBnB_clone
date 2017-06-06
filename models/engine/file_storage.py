@@ -8,11 +8,11 @@ import json
 format = '%Y-%m-%dT%H:%M:%S.%f'
 
 class FileStorage():
-    __file_path = "./file.json"
+    __file_path = './file.json'
     __objects = {}
 
     def all(self):
-        return FileStorage.__objects
+        return (FileStorage.__objects)
 
     def new(self, obj):
         name = str(obj.__class__.__name__)
@@ -24,12 +24,12 @@ class FileStorage():
         new_dict = {}
         for key in FileStorage.__objects.keys():
             new_dict[key] = FileStorage.__objects[key].to_json()
-        with open(FileStorage.__file_path, "w", encoding="UTF8") as f:
+        with open(FileStorage.__file_path, 'w+', encoding='UTF8') as f:
             (json.dump(new_dict, f))
 
     def reload(self):
         if os.path.isfile(FileStorage.__file_path):
-            with open(FileStorage.__file_path, "r") as f:
+            with open(FileStorage.__file_path, 'r') as f:
                 load_value = json.load(f)
             from models.base_model import BaseModel
             for k in load_value.keys():
@@ -38,17 +38,17 @@ class FileStorage():
                     load_value[k]['created_at'] = datetime.datetime.strptime(load_value[k]['created_at'], format)
                 except:
                     pass
-                if (load_value[k]["__class__"] == "BaseModel"):
+                if (load_value[k]['__class__'] == 'BaseModel'):
                     FileStorage.__objects[k] = BaseModel(**load_value[k])
-                elif (load_value[k]["__class__"] == "User"):
+                elif (load_value[k]['__class__'] == 'User'):
                     FileStorage.__objects[k] = User(**load_value[k])
-                elif (load_value[k]["__class__"] == "State"):
+                elif (load_value[k]['__class__'] == 'State'):
                     FileStorage.__objects[k] = State(**load_value[k])
-                elif (load_value[k]["__class__"] == "Amenity"):
+                elif (load_value[k]['__class__'] == 'Amenity'):
                     FileStorage.__objects[k] = Amenity(**load_value[k])
-                elif (load_value[k]["__class__"] == "Place"):
+                elif (load_value[k]['__class__'] == 'Place'):
                     FileStorage.__objects[k] = Place(**load_value[k])
-                elif (load_value[k]["__class__"] == "Review"):
+                elif (load_value[k]['__class__'] == 'Review'):
                     FileStorage.__objects[k] = Review(**load_value[k])
                 else:
-                    print("class doesn't exist")
+                    print('class doesn\'t exist')
