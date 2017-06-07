@@ -12,12 +12,12 @@ class FileStorage():
 
     def all(self):
         """ defining all """
-        return (FileStorage.__objects)
+        return FileStorage.__objects
 
     def new(self, obj):
         """ defining new """
-        name = str(obj.__class__.__name__)
-        key = str(obj.id)
+        name = (obj.__class__.__name__)
+        key = (obj.id)
         new_obj = name + '.' + key
         FileStorage.__objects[new_obj] = obj
 
