@@ -32,10 +32,16 @@ class FileStorage():
             with open(FileStorage.__file_path, 'r') as f:
                 load_value = json.load(f)
             from models.base_model import BaseModel
+            from models.user import User
+            from models.state import State
+            from models.city import City
+            from models.amenity import Amenity
+            from models.place import Place
+            from models.review import Review
             for k in load_value.keys():
                 try:
-                    load_value[k]['updated_at'] = datetime.datetime.strptime(load_value[k]['updated_at'], format)
-                    load_value[k]['created_at'] = datetime.datetime.strptime(load_value[k]['created_at'], format)
+                    load_value[k]['updated_at'] = datetime.strptime(load_value[k]['updated_at'], format)
+                    load_value[k]['created_at'] = datetime.strptime(load_value[k]['created_at'], format)
                 except:
                     pass
                 if (load_value[k]['__class__'] == 'BaseModel'):

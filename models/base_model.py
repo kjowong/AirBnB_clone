@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """BaseModel that defines all common attributes/methods for other classes"""
+import json
 from uuid import uuid4
 from models import storage
 from datetime import datetime
@@ -48,7 +49,7 @@ class BaseModel():
     def __str__(self):
         """ printing string representation of BaseModel """
         return "[{}] ({}) {}".format(
-            self.__class__.__name__, self.id, self.__dict__)
+            self.__class__.__name__, str(self.id), self.__dict__)
 
     def __repr__(self):
         """ format __str__ """
