@@ -23,22 +23,27 @@ class TestBaseModelDictStorage(unittest.TestCase):
             except BaseException:
                 pass
 
+
     def test_file_storage(self):
         """ test for filestorage """
         self.assertFalse(hasattr(self.ikea, "fake_id"))
+        pass
 
     def test_storage_all(self):
         """ test storage all """
+        pass
 
     def test_storage_new(self):
         """ test methods in storage """
+        pass
 
     def test_storage_save(self):
         """ test storage save """
+        pass
 
     def test_storage_reload(self):
         """ test storage reload """
-
+        pass
 
 if __name__ == '__main__':
     unittest.main()
