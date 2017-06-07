@@ -56,3 +56,5 @@ class FileStorage():
                     FileStorage.__objects[k] = Review(**load_value[k])
                 else:
                     print('class doesn\'t exist')
+        else:
+            return
