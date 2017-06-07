@@ -3,10 +3,11 @@
 from uuid import uuid4
 from models import storage
 from datetime import datetime
-format = '%Y-%m-%dT%H:%M:%S.%f'
+
 
 class BaseModel:
     """"class BaseModel"""
+    format = '%Y-%m-%dT%H:%M:%S.%f'
 
     def __init__(self, *args, **kwargs):
         """ initialization self"""
@@ -15,8 +16,8 @@ class BaseModel:
                 try:
                     kwargs['created_at'] = datetime.strptime(
                         kwargs['created_at'],
-                        format)
-                except:
+                        self.format)
+                except BaseException:
                     pass
             if '__class__' in kwargs:
                 del kwargs['__class__']
@@ -36,11 +37,11 @@ class BaseModel:
         new_dict = self.__dict__.copy()
         new_dict.update({'__class__': str(self.__class__.__name__)})
         new_dict.update(
-            {'created_at': datetime.strftime((self.created_at), format)})
+            {'created_at': datetime.strftime((self.created_at), self.format)})
         try:
-            new_dict.update(
-                {'updated_at': datetime.strftime((self.updated_at), format)})
-        except:
+            new_dict.update({'updated_at': datetime.strftime(
+                (self.updated_at), self.format)})
+        except BaseException:
             pass
         return new_dict
 
