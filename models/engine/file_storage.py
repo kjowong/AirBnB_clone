@@ -40,13 +40,6 @@ class FileStorage():
             from models.place import Place
             from models.review import Review
             for k in load_value.keys():
-                try:
-                    load_value[k]['updated_at'] = datetime.strptime(
-                        load_value[k]['updated_at'], format)
-                    load_value[k]['created_at'] = datetime.strptime(
-                        load_value[k]['created_at'], format)
-                except BaseException:
-                    pass
                 if (load_value[k]['__class__'] == 'BaseModel'):
                     FileStorage.__objects[k] = BaseModel(**load_value[k])
                 elif (load_value[k]['__class__'] == 'User'):
