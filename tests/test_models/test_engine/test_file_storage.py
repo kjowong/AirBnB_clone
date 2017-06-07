@@ -7,6 +7,7 @@ import os
 from models import storage
 from models.engine.file_storage import FileStorage
 
+
 class TestBaseModelDictStorage(unittest.TestCase):
     """ class testing File Storage """
 
@@ -25,6 +26,7 @@ class TestBaseModelDictStorage(unittest.TestCase):
     def test_file_storage(self):
         """ test for filestorage """
         self.assertFalse(hasattr(self.ikea, "fake_id"))
+
 
 class TestDocumentation(unittest.TestCase):
     """ class to test documentation """
