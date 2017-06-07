@@ -20,7 +20,7 @@ class BaseModel:
                     kwargs['updated_at'] = datetime.strptime(
                         kwargs['updated_at'],
                         self.date_format)
-                except:
+                except BaseException:
                     pass
             if '__class__' in kwargs:
                 del kwargs['__class__']
@@ -42,9 +42,9 @@ class BaseModel:
         new_dict.update({'created_at': datetime.strftime(
             (self.created_at), self.date_format)})
         try:
-            new_dict.update({'updated_at': datetime.strftime((self.updated_at),
-                                                            self.date_format)})
-        except:
+            new_dict.update({'updated_at': datetime.strftime(
+                (self.updated_at), self.date_format)})
+        except BaseException:
             pass
         return new_dict
 
