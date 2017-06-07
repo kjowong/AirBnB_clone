@@ -14,7 +14,7 @@ class TestBaseModel(unittest.TestCase):
 
     def setUp(self):
         """ setup instance of basemodel """
-        bm = BaseModel()
+        self.bm = BaseModel()
 
     def tearDown(self):
         """ tear down of basemodel """
@@ -26,30 +26,21 @@ class TestBaseModel(unittest.TestCase):
 
     def test_init(self):
         """ testing initialization """
-        self.assertTrue(hasattr(bm, "id"))
-        self.assertTrue(hasattr(bm, "created_at"))
-        self.assertTrue(hasattr(bm, "updated_at"))
-        self.assertTrue(hasattr(bm, "name"))
+        self.assertTrue(hasattr(self.bm, "id"))
+        self.assertTrue(hasattr(self.bm, "created_at"))
+        self.assertFalse(hasattr(self.bm, "updated_at"))
+        self.assertFalse(hasattr(self.bm, "name"))
 
-    def test_with_args(self, *args, **kwargs):
-        """ test with args """
-        pass
+    def test_save(self):
+        """ test with save """
+        self.assertFalse(hasattr(self.bm, "updated_at"))
+        self.bm.save()
+        self.assertTrue(hasattr(self.bm, "created_at"))
 
-    def test_save_init(self):
-        """ test intialization of save """
-        self.assertTrue(hasattr(bm, "updated_at"))
-        self.assertIsNotNone(bm.__objects.get["updated_at"])
-
-    def test_save_update(self):
-        """ test save upadte """
-        str_before = bm.__objects.get["updated_at"]
-        bm.save()
-        str_after = bm.__objects.get["updated_at"]
-        self.assertNotEqual(str_before, str_after)
-
-    def to_json():
+    def test_to_json(self):
         """ test json """
-        pass
+        to_json_bm = self.bm.to_json()
+        self.assertTrue(isinstance(to_json_bm, dict))
 
 
 if __name__ == '__main__':
