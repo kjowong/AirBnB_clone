@@ -29,16 +29,16 @@ class FileStorage():
             (json.dump(new_dict, f))
 
     def reload(self):
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
         if os.path.isfile(FileStorage.__file_path):
-            with open(FileStorage.__file_path, 'r') as f:
+            with open(FileStorage.__file_path, 'r', encoding="UTF8") as f:
                 load_value = json.load(f)
-            from models.base_model import BaseModel
-            from models.user import User
-            from models.state import State
-            from models.city import City
-            from models.amenity import Amenity
-            from models.place import Place
-            from models.review import Review
             for k in load_value.keys():
                 if (load_value[k]['__class__'] == 'BaseModel'):
                     FileStorage.__objects[k] = BaseModel(**load_value[k])
