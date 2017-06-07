@@ -12,9 +12,13 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """ initialization self"""
         if kwargs:
-            kwargs['created_at'] = datetime.strptime(
-                kwargs['created_at'],
-                self.format)
+            if 'created_at' in kwargs:
+                try:
+                    kwargs['created_at'] = datetime.strptime(
+                        kwargs['created_at'],
+                        self.format)
+                except:
+                    pass
             if 'updated_at' in kwargs:
                 try:
                     kwargs['updated_at'] = datetime.strptime(
