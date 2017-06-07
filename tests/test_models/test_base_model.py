@@ -42,6 +42,10 @@ class TestBaseModel(unittest.TestCase):
         to_json_bm = self.bm.to_json()
         self.assertTrue(isinstance(to_json_bm, dict))
 
+    def test_with_args(self, *args, **kwargs):
+        """ test with args """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
