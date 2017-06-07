@@ -129,13 +129,9 @@ class HBNBCommand(cmd.Cmd):
                             temp = obj[key]
                             try:
                                 cmd[3] = cmd[3].strip('"')
-                                if (cmd[3].lstrip('+-').isdigit()):
-                                    cmd[3] = int(cmd[3])
-                                else:
-                                    cmd[3] = str(cmd[3])
-                            except BaseException:
+                                cmd[3] = int(cmd[3])
+                            except:
                                 pass
-                            print(type(cmd[3]))
                             setattr(temp, cmd[2], cmd[3])
                             storage.save()
                             flag = 1
