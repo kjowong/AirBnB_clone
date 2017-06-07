@@ -28,8 +28,6 @@ class TestBaseModel(unittest.TestCase):
         """ testing initialization """
         self.assertTrue(hasattr(self.bm, "id"))
         self.assertTrue(hasattr(self.bm, "created_at"))
-        self.assertFalse(hasattr(self.bm, "updated_at"))
-        self.assertFalse(hasattr(self.bm, "name"))
 
     def test_save(self):
         """ test with save """
@@ -45,6 +43,12 @@ class TestBaseModel(unittest.TestCase):
     def test_with_args(self, *args, **kwargs):
         """ test with args """
         pass
+
+    def test_save_update(self):
+        """ test save update """
+        pass
+
+
 
 
 if __name__ == '__main__':
