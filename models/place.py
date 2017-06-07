@@ -19,7 +19,7 @@ class Place(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """ initialization """
-        if kwargs is not None:
+        if (kwargs.get('id') is not None):
             self.__dict__ = kwargs
         else:
             super().__init__(self)

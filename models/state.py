@@ -8,7 +8,7 @@ class State(BaseModel):
     name = ""
 
     def __init__(self, *args, **kwargs):
-        if kwargs is not None:
+        if (kwargs.get('id') is not None):
             self.__dict__ = kwargs
         else:
             super().__init__(self)
