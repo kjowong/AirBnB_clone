@@ -7,19 +7,19 @@ from datetime import datetime
 
 class BaseModel:
     """"class BaseModel"""
-    format = '%Y-%m-%dT%H:%M:%S.%f'
+    date_format = '%Y-%m-%dT%H:%M:%S.%f'
 
     def __init__(self, *args, **kwargs):
         """ initialization self"""
         if kwargs:
             kwargs['created_at'] = datetime.strptime(
                 kwargs['created_at'],
-                self.format)
+                self.date_format)
             if 'updated_at' in kwargs:
                 try:
                     kwargs['updated_at'] = datetime.strptime(
                         kwargs['updated_at'],
-                        self.format)
+                        self.date_format)
                 except:
                     pass
             if '__class__' in kwargs:
@@ -40,10 +40,10 @@ class BaseModel:
         new_dict = self.__dict__.copy()
         new_dict.update({'__class__': str(self.__class__.__name__)})
         new_dict.update(
-            {'created_at': datetime.strftime((self.created_at), self.format)})
+            {'created_at': datetime.strftime((self.created_at), self.date_format)})
         try:
             new_dict.update({'updated_at': datetime.strftime(
-                (self.updated_at), self.format)})
+                (self.updated_at), self.date_format)})
         except:
             pass
         return new_dict

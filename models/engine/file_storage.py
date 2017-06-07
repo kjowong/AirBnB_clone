@@ -5,10 +5,9 @@ from datetime import datetime
 import os
 import json
 
-format = '%Y-%m-%dT%H:%M:%S.%f'
-
 
 class FileStorage():
+    #date_format = '%Y-%m-%dT%H:%M:%S.%f'
     __file_path = './file.json'
     __objects = {}
 
@@ -40,6 +39,13 @@ class FileStorage():
             with open(FileStorage.__file_path, 'r', encoding="UTF8") as f:
                 load_value = json.load(f)
             for k in load_value.keys():
+                #try:
+                 #   load_value[k]['updated_at'] = datetime.strptime(
+                  #      load_value[k]['updated_at'], format)
+                   # load_value[k]['created_at'] = datetime.strptime(
+                    #    load_value[k]['created_at'], format)
+               # except:
+                #    pass
                 if (load_value[k]['__class__'] == 'BaseModel'):
                     FileStorage.__objects[k] = BaseModel(**load_value[k])
                 elif (load_value[k]['__class__'] == 'User'):
