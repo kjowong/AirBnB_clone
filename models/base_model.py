@@ -39,8 +39,8 @@ class BaseModel:
         """ returns a dict containing all keys\values of the __dict __ """
         new_dict = self.__dict__.copy()
         new_dict.update({'__class__': str(self.__class__.__name__)})
-        new_dict.update(
-            {'created_at': datetime.strftime((self.created_at), self.date_format)})
+        new_dict.update({'created_at': datetime.strftime(
+            (self.created_at), self.date_format)})
         try:
             new_dict.update({'updated_at': datetime.strftime(
                 (self.updated_at), self.date_format)})
