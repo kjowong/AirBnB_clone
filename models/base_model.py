@@ -42,8 +42,8 @@ class BaseModel:
         new_dict.update({'created_at': datetime.strftime(
             (self.created_at), self.date_format)})
         try:
-            new_dict.update({'updated_at': datetime.strftime(
-                (self.updated_at), self.date_format)})
+            new_dict.update({'updated_at': datetime.strftime((self.updated_at),
+                                                            self.date_format)})
         except:
             pass
         return new_dict
