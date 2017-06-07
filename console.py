@@ -116,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** instance id missing **")
                 elif ((str(cmd[0]) + "." + str(cmd[1]))
                       not in storage.all().keys()):
-                        print("** no instance found **")
+                    print("** no instance found **")
                 elif (len(cmd) < 3):
                     print("** attribute name missing **")
                 elif (len(cmd) < 4):
@@ -130,7 +130,7 @@ class HBNBCommand(cmd.Cmd):
                             try:
                                 cmd[3] = cmd[3].strip('"')
                                 cmd[3] = int(cmd[3])
-                            except:
+                            except BaseException:
                                 pass
                             print(type(cmd[3]))
                             setattr(temp, cmd[2], cmd[3])
@@ -143,6 +143,13 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    classes = {"BaseModel": BaseModel, "User": User, "State": State,
-            "City": City, "Place": Place, "Amenity": Amenity, "Review": Review}
+    classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Place": Place,
+        "Amenity": Amenity,
+        "Review": Review
+    }
     HBNBCommand().cmdloop()
