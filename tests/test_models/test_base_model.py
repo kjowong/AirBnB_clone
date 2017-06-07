@@ -26,16 +26,14 @@ class TestBaseModel(unittest.TestCase):
 
     def test_init(self):
         """ testing initialization """
-        #bm = BaseModel()
         self.assertTrue(hasattr(bm, "id"))
-        #self.assertTrue(hasattr(bm, "created_at"))
-        #self.assertTrue(hasattr(bm, "updated_at"))
-        #self.assertTrue(hasattr(bm, "name"))
-        #self.assertTrue(hasattr(bm, "__class__"))
+        self.assertTrue(hasattr(bm, "created_at"))
+        self.assertTrue(hasattr(bm, "updated_at"))
+        self.assertTrue(hasattr(bm, "name"))
 
     def test_with_args(self, *args, **kwargs):
         """ test with args """
-        pass  # to be added
+        pass
 
     def test_save_init(self):
         """ test intialization of save """
