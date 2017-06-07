@@ -48,7 +48,35 @@ class TestBaseModel(unittest.TestCase):
         """ test save update """
         pass
 
+    def test_doc_class(self):
+        """ test class """
+        expected = '"class BaseModel'
+        actual = BaseModel.__doc__
+        self.assertEqual(expected, actual)
 
+    def test_doc_save(self):
+        """ test save """
+        expet = ' updates public instance attribute with the current datetime '
+        actual = BaseModel.save.__doc__
+        self.assertEqual(expet, actual)
+
+    def test_doc_to_json(self):
+        """ test json """
+        e = ' returns a dict containing all keys\x0balues of the __dict __ '
+        actual = BaseModel.to_json.__doc__
+        self.assertEqual(e, actual)
+
+    def test_doc_str_(self):
+        """ test __str__ """
+        expected = ' printing string representation of BaseModel '
+        actual = BaseModel.__str__.__doc__
+        self.assertEqual(expected, actual)
+
+    def test_doc_repr(self):
+        """ test repr """
+        expected = ' format __str__ '
+        actual = BaseModel.__repr__.__doc__
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':
