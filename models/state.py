@@ -8,6 +8,7 @@ class State(BaseModel):
     name = ""
 
     def __init__(self, *args, **kwargs):
+        """ initialization self """
         if (kwargs.get('id') is not None):
             self.__dict__ = kwargs
         else:

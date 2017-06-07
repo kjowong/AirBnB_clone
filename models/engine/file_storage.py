@@ -1,25 +1,28 @@
 #!/usr/bin/python3
 """ File Storage to save an object to a file """
-
 from datetime import datetime
 import os
 import json
 
 
 class FileStorage():
+    """ filestorage class """
     __file_path = './file.json'
     __objects = {}
 
     def all(self):
+        """ defining all """
         return (FileStorage.__objects)
 
     def new(self, obj):
+        """ defining new """
         name = str(obj.__class__.__name__)
         key = str(obj.id)
         new_obj = name + '.' + key
         FileStorage.__objects[new_obj] = obj
 
     def save(self):
+        """ defining save """
         new_dict = {}
         for key in FileStorage.__objects.keys():
             new_dict[key] = FileStorage.__objects[key].to_json()
@@ -27,6 +30,7 @@ class FileStorage():
             (json.dump(new_dict, f))
 
     def reload(self):
+        """ defining reload """
         from models.base_model import BaseModel
         from models.user import User
         from models.state import State
