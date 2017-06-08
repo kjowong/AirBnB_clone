@@ -25,6 +25,7 @@ class FileStorage():
                     new_dict[key][new_key] = str(new_dict[key].get(new_key))
         with open(self.__file_path, "w", encoding="UTF8") as f:
             f.write(json.dumps(new_dict))
+
     def reload(self):
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, "r") as f:

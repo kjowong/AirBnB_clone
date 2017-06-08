@@ -11,8 +11,8 @@ class BaseModel():
         if kwargs:
             self.id = kwargs['id']
             self.created_at = kwargs['created_at']
+            """handle updated_at differently"""
             self.updated_at = datetime.now()
-            print("hello")
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
