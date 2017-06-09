@@ -21,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
         return False
 
     def do_create(self, line):
-        """ Create new instance of BaseModel """
+        """ create function """
         if not line:
             print("** class name missing **")
         else:
@@ -34,21 +34,27 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
 
     def do_show(self, line):
-        """ Show prints the string representation of an instance """
-        cmd = line.split()
+        """ show function """
         if not line:
             print("** class name missing **")
         else:
-            if cmd[0] in classes:
-                inst = classes[cmd[0]]()
-                if not cmd[1]:
+            cmd = line.split()
+            flag = 0
+            if (cmd[0] in classes):
+                if (len(cmd) < 2):
                     print("** instance id missing **")
-                elif cmd[1]:
-                    print(inst.storage)
                 else:
-                    print("** id doesn't exist **")
+                    obj = storage.all()
+                    new = str(cmd[0]) + "." + str(cmd[1])
+                    for key in obj.keys():
+                        if (new == key):
+                            print(obj[key])
+                            flag = 1
+                    if (flag == 0):
+                        print("** no instance found **")
             else:
                 print("** class doesn't exist **")
+
 
 if __name__ == '__main__':
     classes = {"BaseModel": BaseModel}
