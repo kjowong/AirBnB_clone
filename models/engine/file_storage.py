@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 """ File Storage to save an object to a file """
-from datetime import datetime
+import datetime
+# from datetime import datetime
 import os
 import json
+# from datetime import datetime
+format = '%Y-%m-%dT%H:%M:%S.%f'
 
 class FileStorage():
     def __init__(self):
@@ -19,16 +22,25 @@ class FileStorage():
         new_dict = {}
         for key in self.__objects.keys():
             new_dict[key] = self.__objects[key].to_json()
+        '''
         for key in new_dict:
             for new_key in new_dict[key]:
-                if type(new_dict[key][new_key]) is datetime:
-                    new_dict[key][new_key] = str(new_dict[key].get(new_key))
+                new_dict[key][new_key] = (new_dict[key].get(new_key))
+        '''
         with open(self.__file_path, "w", encoding="UTF8") as f:
-            f.write(json.dumps(new_dict))
+            (json.dump(new_dict, f))
+
     def reload(self):
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, "r") as f:
                 load_value = json.load(f)
             from models.base_model import BaseModel
             for k in load_value.keys():
+                print("key {}".format(k))
+                print("inside the key {}".format(load_value[k]))
+                load_value[k]['created_at'] = datetime.datetime.strptime(load_value[k]['created_at'], format)
+                try:
+                    load_value[k]['updated_at'] = datetime.datetime.strptime(load_value[k]['updated_at'], format)
+                except:
+                    pass
                 self.__objects[k] = BaseModel(**load_value[k])
