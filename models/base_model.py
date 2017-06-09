@@ -10,15 +10,11 @@ class BaseModel():
     "class Base Model"
     def __init__(self, *args, **kwargs):
         if kwargs:
-<<<<<<< HEAD
             if 'created_at' in kwargs:
                 try:
                     kwargs['created_at'] = datetime.strptime(kwargs['created_at'], format)
                 except:
                     pass
-=======
-            
->>>>>>> updating for kwargs
             self.__dict__ = kwargs
         else:
             self.id = str(uuid4())
