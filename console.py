@@ -7,8 +7,6 @@ from models.__init__ import storage
 
 class HBNBCommand(cmd.Cmd):
     """ entry point to hbnb"""
-#    classes = {"BaseModel": BaseModel}
-#    intro = "Simple command line interpretor"
     prompt = '(hbnb) '
 
     def do_quit(self, line):
@@ -23,6 +21,7 @@ class HBNBCommand(cmd.Cmd):
         return False
 
     def do_create(self, line):
+        """ Create new instance of BaseModel """
         if not line:
             print("** class name missing **")
         else:
@@ -31,6 +30,23 @@ class HBNBCommand(cmd.Cmd):
                 inst = classes[cmd[0]]()
                 inst.save()
                 print(inst.id)
+            else:
+                print("** class doesn't exist **")
+
+    def do_show(self, line):
+        """ Show prints the string representation of an instance """
+        cmd = line.split()
+        if not line:
+            print("** class name missing **")
+        else:
+            if cmd[0] in classes:
+                inst = classes[cmd[0]]()
+                if not cmd[1]:
+                    print("** instance id missing **")
+                elif cmd[1]:
+                    print(inst.storage)
+                else:
+                    print("** id doesn't exist **")
             else:
                 print("** class doesn't exist **")
 
