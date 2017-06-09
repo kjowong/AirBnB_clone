@@ -10,9 +10,12 @@ class BaseModel():
     "class Base Model"
     def __init__(self, *args, **kwargs):
         if kwargs:
+            if 'created_at' in kwargs:
+                try:
+                    kwargs['created_at'] = datetime.strptime(kwargs['created_at'], format)
+                except:
+                    pass
             self.__dict__ = kwargs
-            """handle updated_at differently"""
-           # self.updated_at = datetime.now()
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
