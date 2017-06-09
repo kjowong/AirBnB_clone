@@ -1,10 +1,16 @@
 #!/usr/bin/python3
 """ File Storage to save an object to a file """
+<<<<<<< HEAD
 import datetime
 from datetime import datetime
 import os
 import json
 
+=======
+from datetime import datetime
+import os
+import json
+>>>>>>> updating for kwargs
 format = '%Y-%m-%dT%H:%M:%S.%f'
 
 class FileStorage():
@@ -31,9 +37,17 @@ class FileStorage():
                 load_value = json.load(f)
             from models.base_model import BaseModel
             for k in load_value.keys():
+<<<<<<< HEAD
                 try:
                     load_value[k]['updated_at'] = datetime.strptime(load_value[k]['updated_at'], format)
                     load_value[k]['created_at'] = datetime.strptime(load_value[k]['created_at'], format)
+=======
+                print("key {}".format(k))
+                print("inside the key {}".format(load_value[k]))
+                try:
+                    load_value[k]['updated_at'] = datetime.datetime.strptime(load_value[k]['updated_at'], format)
+                    load_value[k]['created_at'] = datetime.datetime.strptime(load_value[k]['created_at'], format)
+>>>>>>> updating for kwargs
                 except:
                     pass
                 self.__objects[k] = BaseModel(**load_value[k])
