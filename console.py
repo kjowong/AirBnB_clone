@@ -3,7 +3,7 @@
 import cmd
 import os
 from models.base_model import BaseModel
-from models  import storage
+from models import storage
 from models.engine.file_storage import FileStorage
 from models.user import User
 from models.state import State
@@ -113,7 +113,8 @@ class HBNBCommand(cmd.Cmd):
             if (cmd[0] in classes):
                 if (len(cmd) < 2):
                     print("** instance id missing **")
-                elif ((str(cmd[0]) + "." + str(cmd[1])) not in storage.all().keys()):
+                elif ((str(cmd[0]) + "." + str(cmd[1]))
+                      not in storage.all().keys()):
                         print("** no instance found **")
                 elif (len(cmd) < 3):
                     print("** attribute name missing **")
@@ -127,8 +128,10 @@ class HBNBCommand(cmd.Cmd):
                             temp = obj[key]
                             try:
                                 cmd[3] = cmd[3].strip('"')
+                                cmd[3] = int(cmd[3])
                             except:
                                 pass
+                            print(type(cmd[3]))
                             setattr(temp, cmd[2], cmd[3])
                             storage.save()
                             flag = 1
@@ -140,9 +143,9 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     classes = {"BaseModel": BaseModel, "User": User, "State": State,
-    "City": City, "Place": Place}
+               "City": City, "Place": Place}
     """
-    "Amenity": Amenity, 
+    "Amenity": Amenity,
     "Review": Review
     """
     HBNBCommand().cmdloop()
