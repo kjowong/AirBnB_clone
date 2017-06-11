@@ -1,18 +1,16 @@
 #!/usr/bin/python3
-""" creating User Class """
+""" creating City Class """
 from models.base_model import BaseModel
 
 
-class User(BaseModel):
-    """ Class User """
-    email = ""
-    password = ""
-    first_name = ""
-    last_name = ""
+class City(BaseModel):
+    """ Class City """
+    state_id = ""
+    name = ""
 
     def __init__(self, *args, **kwargs):
         """ initialization """
-        if kwargs is not None:
+        if kwargs.get(id) is not None:
             self.__dict__ = kwargs
         else:
             super().__init__(self)
