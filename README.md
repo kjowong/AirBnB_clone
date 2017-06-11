@@ -16,8 +16,18 @@ This project consists of building a command interpreter to manipulate data witho
 * manage (create, update, destroy, etc) objects via a console / command interpreter
 * store and persist objects to a file (JSON file)
 
+### Files and Directories
+
+* `models` directory contains all classes used for the entire project.
+* `tests` directory contain all unit tests.
+* `console.py` file is the entry point of the command interpreter.
+* `models/base_model.py file` is the base class of all models. It contains common elements:
+** attributes: `id`, `created_at` and `updated_at`
+** methods: `save()` and `to_json()`
+* `models/engine` directory contain all storage classes (using the same prototype). 
+
 ### Execution
-To run the console, type `./console.py` script. 
+To run the console, type `./console.py` script.
 Type `help` for list of commands.
 
 Commands include:
@@ -26,4 +36,4 @@ Commands include:
 * `destroy`: delete model
 * `all`: display information about all models
 * `update`: updates instance based on name, id and attribute
-quit: exits
+* `quit`: exits the console
