@@ -3,33 +3,35 @@
 
 import unittest
 import models
+import os
 from models.engine.file_storage import FileStorage
 
 class TestBaseModelDictStorage(unittest.TestCase):
     """ class testing File Storage """
 
-    """
-    def test_init(self):
-        bm = BaseModel()
-        self.assertTrue(hasattr(bm, "id"))
-        self.assertTrue(hasattr(bm, "__class__"))
-        self.assertTrue(hasattr(bm, "created_at"))
-#        self.assertTrue(hasattr(bm, "updated_at"))
-    """
+    def setUp(self):
+        """ setup """
+        self.ikea = FileStorage()
+
+    def tearDown(self):
+        """ tear down"""
+        if os.path.exists("file.json"):
+            try:
+                os.remove("file.json")
+            except:
+                pass
 
     def test_file_storage(self):
         """ test for filestorage """
-        self.storage = FileStorage()
-        self.assertTrue(hasattr(self.storage, "__file_path"))
-        self.assertFalse(hasattr(self.storage, "fake_id"))
+        self.assertTrue(hasattr(self.ikea, "__file_path"))
+        self.assertFalse(hasattr(self.ikea, "fake_id"))
 
     def test_storage_func(self):
         """ test methods in storage """
-        self.storage = FileStorage()
-        self.storage.new()
-        one = self.storage.name
-        two = self.storage.key
-        self.storage.save()
+        self.ikea.new()
+        one = self.ikea.name
+        two = self.ikea.key
+        self.ikea.save()
         self.assertTrue(type(one) is str)
         self.assertFalse(type(two) is int)
 
