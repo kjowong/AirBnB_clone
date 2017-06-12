@@ -100,6 +100,8 @@ class HBNBCommand(cmd.Cmd):
             cmd = line.split()
             if (cmd[0] in classes):
                 obj = storage.all()
+                if (len(storage.all()) == 0):
+                    print("[]")
                 for key in obj.keys():
                     print(obj[key])
             else:
@@ -149,6 +151,5 @@ if __name__ == '__main__':
         "City": City,
         "Place": Place,
         "Amenity": Amenity,
-        "Review": Review
-    }
+        "Review": Review}
     HBNBCommand().cmdloop()
