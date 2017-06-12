@@ -13,9 +13,11 @@ class TestBaseModel(unittest.TestCase):
     """ class TestBaseModel """
 
     def setUp(self):
+        """ setup instance of basemodel """
         bm = BaseModel()
 
     def tearDown(self):
+        """ tear down of basemodel """
         if os.path.exists("file.json"):
             try:
                 os.remove("file.json")
@@ -23,6 +25,7 @@ class TestBaseModel(unittest.TestCase):
                 pass
 
     def test_init(self):
+        """ testing initialization """
         #bm = BaseModel()
         self.assertTrue(hasattr(bm, "id"))
         #self.assertTrue(hasattr(bm, "created_at"))
@@ -31,19 +34,23 @@ class TestBaseModel(unittest.TestCase):
         #self.assertTrue(hasattr(bm, "__class__"))
 
     def test_with_args(self, *args, **kwargs):
+        """ test with args """
         pass  # to be added
 
     def test_save_init(self):
+        """ test intialization of save """
         self.assertTrue(hasattr(bm, "updated_at"))
         self.assertIsNotNone(bm.__objects.get["updated_at"])
 
     def test_save_update(self):
+        """ test save upadte """
         str_before = bm.__objects.get["updated_at"]
         bm.save()
         str_after = bm.__objects.get["updated_at"]
         self.assertNotEqual(str_before, str_after)
 
     def to_json():
+        """ test json """
         pass
 
 

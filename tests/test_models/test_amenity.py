@@ -21,6 +21,7 @@ class TestAmenityClass(unittest.TestCase):
         self.assertFalse(self.one.name, "under the bridge")
 
     def test_amenity_type(self):
+        """ amenity test type """
         self.one = Amenity()
         self.assertEqual(type(self.one.name), str)
         self.assertNotEqual(type(self.one.name), list)
