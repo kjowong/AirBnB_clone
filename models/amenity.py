@@ -13,5 +13,3 @@ class Amenity(BaseModel):
             self.__dict__ = kwargs
         else:
             super().__init__(self)
-
-

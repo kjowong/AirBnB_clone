@@ -21,7 +21,7 @@ class BaseModel():
                 except:
                     pass
             # if '__class__' in kwargs:
-             #   del kwargs['__class__']
+            #   del kwargs['__class__']
             self.__dict__ = kwargs
         else:
             self.id = str(uuid4())
