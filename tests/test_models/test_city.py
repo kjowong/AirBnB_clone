@@ -16,6 +16,7 @@ class TestCityClass(unittest.TestCase):
         self.assertFalse(hasattr(self.one, "area"))
 
     def test_city_value(self):
+        """ test city value type """
         self.one = City()
         self.assertEqual(self.one.state_id, "")
         self.assertEqual(self.one.name, "")

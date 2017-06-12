@@ -15,6 +15,7 @@ class TestAmenityClass(unittest.TestCase):
         self.assertFalse(hasattr(self.one, "area"))
 
     def test_amenity_value(self):
+        """ test amenity value type """
         self.one = Amenity()
         self.assertEqual(self.one.name, "")
         self.assertFalse(self.one.name, "under the bridge")
