@@ -143,7 +143,9 @@ Commands include:
 (hbnb) create User
 3db5637d-5df4-44cf-a250-ef2b523946e9
 (hbnb) show User 3db5637d-5df4-44cf-a250-ef2b523946e9
-[User] (3db5637d-5df4-44cf-a250-ef2b523946e9) {'id': '3db5637d-5df4-44cf-a250-ef2b523946e9', 'updated_at': datetime.datetime(2017, 6, 13, 4, 18, 50, 138053), 'created_at': datetime.datetime(2017, 6, 13, 4, 18, 50, 138027)}
+[User] (3db5637d-5df4-44cf-a250-ef2b523946e9) {'id': '3db5637d-5df4-44cf-a250-ef2b523946e9', 
+       'updated_at': datetime.datetime(2017, 6, 13, 4, 18, 50, 138053), 'created_at': 
+       datetime.datetime(2017, 6, 13, 4, 18, 50, 138027)}
 (hbnb) destroy User 3db5637d-5df4-44cf-a250-ef2b523946e9
 (hbnb) show User 3db5637d-5df4-44cf-a250-ef2b523946e9
 ** no instance found **
@@ -162,6 +164,7 @@ If found - call exterminator
 
 ### Authors
 *Kimberly Wong* - [Github](https://github.com/kjowong) || [Twitter](https://twitter.com/kjowong) || [email](kimberly.wong@holbertonschool.com)
+
 *Halina Veratsennik* - [Github](https://github.com/halinav00) || [Twitter](https://twitter.com/halinav) || [email](contact.halinav@gmail.com)
 
 
