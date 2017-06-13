@@ -11,7 +11,8 @@ This project consists of building a command line interpreter (console) to manipu
 
 
 ### Environment
-Our Monty interpreter has been tested on Ubuntu 14.05.5 LTS
+Our AirBnB clone has been tested on Ubuntu 14.05.5 LTS
+
 Tests done in VirtualBox on [Ubuntu](https://atlas.hashicorp.com/ubuntu/boxes/trusty64) via [Vagrant](https://www.vagrantup.com/)(1.9.1)
 
 ## Files and Directories
