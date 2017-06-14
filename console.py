@@ -96,7 +96,11 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """ print all instances function """
         if not line:
-            print("** class doesn't exist **")
+            obj = storage.all()
+            if (len(storage.all()) == 0):
+                print("[]")
+            for key in obj.keys():
+                print(obj[key])
         else:
             cmd = line.split()
             if (cmd[0] in classes):
