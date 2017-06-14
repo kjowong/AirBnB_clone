@@ -104,7 +104,8 @@ class HBNBCommand(cmd.Cmd):
                 if (len(storage.all()) == 0):
                     print("[]")
                 for key in obj.keys():
-                    print(obj[key])
+                    if obj[key].__class__.__name__ == cmd[0]:
+                        print(obj[key])
             else:
                 print("** class doesn't exist **")
 
@@ -147,6 +148,47 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** class doesn't exist **")
 
+    def do_BaseModel(self, line):
+        """ doing functions on BaseModel """
+        cmd = line.split('.')
+        if (cmd[1] == "all()"):
+            self.do_all("BaseModel")
+
+    def do_Amenity(self, line):
+        """ for functions on Amenity"""
+        cmd = line.split('.')
+        if (cmd[1] == "all()"):
+            self.do_all("Amenity")
+
+    def do_City(self, line):
+        """ for functions on City"""
+        cmd = line.split('.')
+        if (cmd[1] == "all()"):
+            self.do_all("City")
+
+    def do_Place(self, line):
+        """ for functions on Place """
+        cmd = line.split('.')
+        if (cmd[1] == "all()"):
+            self.do_all("Place")
+
+    def do_Review(self, line):
+        """for functions on Review """
+        cmd = line.split('.')
+        if (cmd[1] == "all()"):
+            self.do_all("Review")
+
+    def do_State(self, line):
+        """for functions on State """
+        cmd = line.split('.')
+        if (cmd[1] == "all()"):
+            self.do_all("State")
+
+    def do_User(self, line):
+        """for functions on User """
+        cmd = line.split('.')
+        if (cmd[1] == "all()"):
+            self.do_all("User")
 
 if __name__ == '__main__':
     classes = {
