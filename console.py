@@ -172,6 +172,13 @@ class HBNBCommand(cmd.Cmd):
             self.do_all("BaseModel")
         elif (cmd[1] == "count()"):
             self.counter("BaseModel")
+        try:
+            cmd1 = cmd[1].split('(')
+            getid = cmd1[1].split(')')
+        except:
+            pass
+        if (cmd1[0] == "show"):
+            self.do_show("BaseModel {}".format(getid[0]))
 
     def do_Amenity(self, line):
         """ for functions on Amenity"""
@@ -180,6 +187,13 @@ class HBNBCommand(cmd.Cmd):
             self.do_all("Amenity")
         elif (cmd[1] == "count()"):
             self.counter("Amenity")
+        try:
+            cmd1 = cmd[1].split('(')
+            getid = cmd1[1].split(')')
+        except:
+            pass
+        if (cmd1[0] == "show"):
+            self.do_show("Amenity {}".format(getid[0]))
 
     def do_City(self, line):
         """ for functions on City"""
@@ -188,12 +202,28 @@ class HBNBCommand(cmd.Cmd):
             self.do_all("City")
         elif (cmd[1] == "count()"):
             self.counter("City")
+        try:
+            cmd1 = cmd[1].split('(')
+            getid = cmd1[1].split(')')
+        except:
+            pass
+        if (cmd1[0] == "show"):
+            self.do_show("City {}".format(getid[0]))
 
     def do_Place(self, line):
         """ for functions on Place """
         cmd = line.split('.')
         if (cmd[1] == "all()"):
             self.do_all("Place")
+        elif (cmd[1] == "count()"):
+            self.counter("Place")
+        try:
+            cmd1 = cmd[1].split('(')
+            getid = cmd1[1].split(')')
+        except:
+            pass
+        if (cmd1[0] == "show"):
+            self.do_show("Place {}".format(getid[0]))
 
     def do_Review(self, line):
         """for functions on Review """
@@ -202,6 +232,13 @@ class HBNBCommand(cmd.Cmd):
             self.do_all("Review")
         elif (cmd[1] == "count()"):
             self.counter("Review")
+        try:
+            cmd1 = cmd[1].split('(')
+            getid = cmd1[1].split(')')
+        except:
+            pass
+        if (cmd1[0] == "show"):
+            self.do_show("Review {}".format(getid[0]))
 
     def do_State(self, line):
         """for functions on State """
@@ -210,6 +247,13 @@ class HBNBCommand(cmd.Cmd):
             self.do_all("State")
         elif (cmd[1] == "count()"):
             self.counter("State")
+        try:
+            cmd1 = cmd[1].split('(')
+            getid = cmd1[1].split(')')
+        except:
+            pass
+        if (cmd1[0] == "show"):
+            self.do_show("State {}".format(getid[0]))
 
     def do_User(self, line):
         """for functions on User """
@@ -218,6 +262,13 @@ class HBNBCommand(cmd.Cmd):
             self.do_all("User")
         elif (cmd[1] == "count()"):
             self.counter("User")
+        try:
+            cmd1 = cmd[1].split('(')
+            getid = cmd1[1].split(')')
+        except:
+            pass
+        if (cmd1[0] == "show"):
+            self.do_show("User {}".format(getid[0]))
 
 if __name__ == '__main__':
     classes = {
