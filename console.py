@@ -152,23 +152,42 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** class doesn't exist **")
 
+    def counter(self, line):
+        """ method to count number of class instances"""
+        cmd = line.split()
+        if (cmd[0] in classes):
+            obj = storage.all()
+            count = 0
+            for key in obj.keys():
+                if obj[key].__class__.__name__ == cmd[0]:
+                    count += 1
+            print("{:d}".format(count))
+        else:
+            print("** class doesn't exist **")
+
     def do_BaseModel(self, line):
         """ doing functions on BaseModel """
         cmd = line.split('.')
         if (cmd[1] == "all()"):
             self.do_all("BaseModel")
+        elif (cmd[1] == "count()"):
+            self.counter("BaseModel")
 
     def do_Amenity(self, line):
         """ for functions on Amenity"""
         cmd = line.split('.')
         if (cmd[1] == "all()"):
             self.do_all("Amenity")
+        elif (cmd[1] == "count()"):
+            self.counter("Amenity")
 
     def do_City(self, line):
         """ for functions on City"""
         cmd = line.split('.')
         if (cmd[1] == "all()"):
             self.do_all("City")
+        elif (cmd[1] == "count()"):
+            self.counter("City")
 
     def do_Place(self, line):
         """ for functions on Place """
@@ -181,18 +200,24 @@ class HBNBCommand(cmd.Cmd):
         cmd = line.split('.')
         if (cmd[1] == "all()"):
             self.do_all("Review")
+        elif (cmd[1] == "count()"):
+            self.counter("Review")
 
     def do_State(self, line):
         """for functions on State """
         cmd = line.split('.')
         if (cmd[1] == "all()"):
             self.do_all("State")
+        elif (cmd[1] == "count()"):
+            self.counter("State")
 
     def do_User(self, line):
         """for functions on User """
         cmd = line.split('.')
         if (cmd[1] == "all()"):
             self.do_all("User")
+        elif (cmd[1] == "count()"):
+            self.counter("User")
 
 if __name__ == '__main__':
     classes = {
