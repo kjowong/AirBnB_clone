@@ -175,10 +175,16 @@ class HBNBCommand(cmd.Cmd):
         try:
             cmd1 = cmd[1].split('(')
             getid = cmd1[1].split(')')
+            last = getid[0].split(', ')
         except:
             pass
         if (cmd1[0] == "show"):
             self.do_show("BaseModel {}".format(getid[0]))
+        elif(cmd1[0] == "destroy"):
+            self.do_destroy("BaseModel {}".format(getid[0]))
+        elif(cmd1[0] == "update"):
+            self.do_update("BaseModel {} {} {}".
+                           format(last[0], last[1], last[2]))
 
     def do_Amenity(self, line):
         """ for functions on Amenity"""
@@ -190,10 +196,16 @@ class HBNBCommand(cmd.Cmd):
         try:
             cmd1 = cmd[1].split('(')
             getid = cmd1[1].split(')')
+            last = getid[0].split(', ')
         except:
             pass
         if (cmd1[0] == "show"):
             self.do_show("Amenity {}".format(getid[0]))
+        elif(cmd1[0] == "destroy"):
+            self.do_destroy("Amenity {}".format(getid[0]))
+        elif(cmd1[0] == "update"):
+            self.do_update("Amenity {} {} {}".
+                           format(last[0], last[1], last[2]))
 
     def do_City(self, line):
         """ for functions on City"""
@@ -205,10 +217,16 @@ class HBNBCommand(cmd.Cmd):
         try:
             cmd1 = cmd[1].split('(')
             getid = cmd1[1].split(')')
+            last = getid[0].split(', ')
         except:
             pass
         if (cmd1[0] == "show"):
             self.do_show("City {}".format(getid[0]))
+        elif(cmd1[0] == "destroy"):
+            self.do_destroy("City {}".format(getid[0]))
+        elif(cmd1[0] == "update"):
+            self.do_update("City {} {} {}".
+                           format(last[0], last[1], last[2]))
 
     def do_Place(self, line):
         """ for functions on Place """
@@ -220,10 +238,16 @@ class HBNBCommand(cmd.Cmd):
         try:
             cmd1 = cmd[1].split('(')
             getid = cmd1[1].split(')')
+            last = getid[0].split(', ')
         except:
             pass
         if (cmd1[0] == "show"):
             self.do_show("Place {}".format(getid[0]))
+        elif(cmd1[0] == "destroy"):
+            self.do_destroy("Place {}".format(getid[0]))
+        elif(cmd1[0] == "update"):
+            self.do_update("Place {} {} {}".
+                           format(last[0], last[1], last[2]))
 
     def do_Review(self, line):
         """for functions on Review """
@@ -235,10 +259,16 @@ class HBNBCommand(cmd.Cmd):
         try:
             cmd1 = cmd[1].split('(')
             getid = cmd1[1].split(')')
+            last = getid[0].split(', ')
         except:
             pass
         if (cmd1[0] == "show"):
             self.do_show("Review {}".format(getid[0]))
+        elif(cmd1[0] == "destroy"):
+            self.do_destroy("Review {}".format(getid[0]))
+        elif(cmd1[0] == "update"):
+            self.do_update("Review {} {} {}".
+                           format(last[0], last[1], last[2]))
 
     def do_State(self, line):
         """for functions on State """
@@ -250,10 +280,16 @@ class HBNBCommand(cmd.Cmd):
         try:
             cmd1 = cmd[1].split('(')
             getid = cmd1[1].split(')')
+            last = getid[0].split(', ')
         except:
             pass
         if (cmd1[0] == "show"):
             self.do_show("State {}".format(getid[0]))
+        elif(cmd1[0] == "destroy"):
+            self.do_destroy("State {}".format(getid[0]))
+        elif(cmd1[0] == "update"):
+            self.do_update("State {} {} {}".
+                           format(last[0], last[1], last[2]))
 
     def do_User(self, line):
         """for functions on User """
@@ -265,10 +301,16 @@ class HBNBCommand(cmd.Cmd):
         try:
             cmd1 = cmd[1].split('(')
             getid = cmd1[1].split(')')
+            last = getid[0].split(', ')
         except:
             pass
         if (cmd1[0] == "show"):
             self.do_show("User {}".format(getid[0]))
+        elif(cmd1[0] == "destroy"):
+            self.do_destroy("User {}".format(getid[0]))
+        elif(cmd1[0] == "update"):
+            self.do_update("User {} {} {}".
+                           format(last[0], last[1], last[2]))
 
 if __name__ == '__main__':
     classes = {
