@@ -1,0 +1,69 @@
+.filters {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+}
+
+button {
+    position: relative;
+    font-size: 18px;
+    background-color: #FF5A5F;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    top: 50%;
+    float: right;
+    right: 30px;
+    transform: translateY(-50%);
+}
+
+button:hover {
+    opacity: .90;
+}
+
+.locations {
+    height: 100%;
+    width: 25%;
+    border-right: 1px solid #DDDDDD;
+    float: left;
+    position: relative;
+}
+
+.amenities {
+    height: 100%;
+    width: 25%;
+    float: left;
+    position: relative;
+}
+
+h3 {
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.locations-text {
+    transform: translate(50%, 50%);
+    position: relative;
+    float: left;
+    bottom: 10px;
+}
+
+.amenities-text {
+    transform: translate(50%, 50%);
+    position: relative;
+    float: left;
+    bottom: 10px;
+}
